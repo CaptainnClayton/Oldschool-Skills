@@ -9,22 +9,25 @@
 import UIKit
 
 class SkillsViewController: UIViewController {
-
+    
+    @IBOutlet weak var SkillType: UITextView!
+    @IBOutlet weak var SkillDefinition: UITextView!
+    
+    var skillInfo: Skill?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+        updateView()
     }
     
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func updateView(){
+        if let skill = skillInfo{
+            title = skill.name
+            SkillType.text = skill.style
+            SkillDefinition.text = skill.definition
+        }
     }
-    */
 
 }

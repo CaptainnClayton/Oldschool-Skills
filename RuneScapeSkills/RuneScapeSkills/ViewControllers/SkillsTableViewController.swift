@@ -45,21 +45,29 @@ class SkillsTableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Skills", for: indexPath)
+        
+        let skillName = skills[indexPath.row]
+        cell.textLabel?.text = skillName.name
+        
         return cell
     }
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "SkillInformationSegue"{
+            if let skillVC = segue.destination as? SkillsViewController,
+                let indexpath = self.tableView.indexPathForSelectedRow
+                {
+                    skillVC.skillInfo = skills[indexpath.row]
+            }
+            
+        }
     }
-    */
+    
 
 }
